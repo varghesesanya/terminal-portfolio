@@ -1,65 +1,44 @@
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap-reverse;
 
-  @media (max-width: 932px) {
-    margin-bottom: 1.5rem;
-  }
 
-  div {
-    @media (min-width: 1024px) {
-      flex-basis: 50%;
-    }
-  }
 `;
 
-export const PreName = styled.pre`
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+export const PreName = styled.div`
+`;
 
-  @media (max-width: 550px) {
-    display: none;
-  }
+export const Cmd = styled.span`
+  font-family: monospace;
+`;
+
+
+export const PreNameMobile = styled.div`
+  display: none;
+  font-size: 2rem;
+  font-weight: bold;
 `;
 
 export const PreWrapper = styled.div`
-  text-align: center;
+  margin-top: 10px;
 `;
 
-export const PreNameMobile = styled.pre`
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+export const Seperator = styled.div`
+  margin: 10px 0;
+`;
 
-  @media (min-width: 550px) {
-    display: none;
+export const Link = styled.a`
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
 export const PreImg = styled.pre`
-  @media (max-width: 550px) {
-    display: none;
-  }
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  white-space: pre;
+  overflow-x: auto;
 `;
 
-export const Seperator = styled.div`
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-`;
-
-export const Cmd = styled.span`
-  color: ${({ theme }) => theme.colors?.primary};
-`;
-
-export const Link = styled.a`
-  color: ${({ theme }) => theme.colors?.secondary};
-  text-decoration: none;
-  line-height: 1.5rem;
-  white-space: nowrap;
-  border-bottom: 2px dashed ${({ theme }) => theme.colors?.secondary};
-
-  &:hover {
-    border-bottom-style: solid;
-  }
-`;

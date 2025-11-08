@@ -27,17 +27,19 @@ type Command = {
 }[];
 
 export const commands: Command = [
-  { cmd: "about", desc: "about Sat Naing", tab: 8 },
+  { cmd: "about", desc: "about Sanya", tab: 8 },
   { cmd: "clear", desc: "clear the terminal", tab: 8 },
   { cmd: "echo", desc: "print out anything", tab: 9 },
   { cmd: "education", desc: "my education background", tab: 4 },
   { cmd: "email", desc: "send an email to me", tab: 8 },
+  { cmd: "experience", desc: "my work experience", tab: 4 },
   { cmd: "gui", desc: "go to my portfolio in GUI", tab: 10 },
   { cmd: "help", desc: "check available commands", tab: 9 },
   { cmd: "history", desc: "view command history", tab: 6 },
   { cmd: "projects", desc: "view projects that I've coded", tab: 5 },
   { cmd: "pwd", desc: "print current working directory", tab: 10 },
   { cmd: "socials", desc: "check out my social accounts", tab: 6 },
+  { cmd: "stack", desc: "view my tech stack", tab: 8 },
   { cmd: "themes", desc: "check available themes", tab: 7 },
   { cmd: "welcome", desc: "display hero section", tab: 6 },
   { cmd: "whoami", desc: "about current user", tab: 7 },
@@ -73,7 +75,7 @@ const Terminal = () => {
       setRerender(false);
       setInputVal(e.target.value);
     },
-    [inputVal]
+    []
   );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -91,15 +93,16 @@ const Terminal = () => {
   };
 
   // focus on input when terminal is clicked
-  const handleDivClick = () => {
+  const handleDivClick = useCallback(() => {
     inputRef.current && inputRef.current.focus();
-  };
+  }, []);
+
   useEffect(() => {
     document.addEventListener("click", handleDivClick);
     return () => {
       document.removeEventListener("click", handleDivClick);
     };
-  }, [containerRef]);
+  }, [handleDivClick]);
 
   // Keyboard Press
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -219,7 +222,7 @@ const Terminal = () => {
           clearHistory,
         };
         return (
-          <div key={_.uniqueId(`${cmdH}_`)}>
+          <div key={`${cmdH}_${index}`}>
             <div>
               <TermInfo />
               <MobileBr />
